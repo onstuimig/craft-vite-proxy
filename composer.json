@@ -1,0 +1,42 @@
+{
+    "name": "onstuimig/craft-vite-proxy",
+    "description": "Proxy for Vite dev server files",
+	"version": "1.0.0",
+    "type": "craft-plugin",
+    "license": "proprietary",
+    "require": {
+        "php": ">=8.0.2",
+        "craftcms/cms": "^4.0.0",
+		"nystudio107/craft-vite": "^4.0.1"
+    },
+    "require-dev": {
+        "craftcms/ecs": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "onstuimig\\viteproxy\\": "src/"
+        }
+    },
+    "extra": {
+        "handle": "vite-proxy",
+        "name": "Vite Proxy",
+        "developer": "Onstuimig",
+        "documentationUrl": "",
+        "class": "onstuimig\\viteproxy\\ViteProxy"
+    },
+    "scripts": {
+        "check-cs": "ecs check --ansi",
+        "fix-cs": "ecs check --ansi --fix",
+        "phpstan": "phpstan --memory-limit=1G"
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "8.0.2"
+        },
+        "allow-plugins": {
+            "yiisoft/yii2-composer": true,
+            "craftcms/plugin-installer": true
+        }
+    }
+}
