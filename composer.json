@@ -1,7 +1,7 @@
 {
     "name": "onstuimig/craft-vite-proxy",
     "description": "Proxy for Vite dev server files",
-	"version": "1.0.0",
+	"version": "1.0.1",
     "type": "craft-plugin",
     "license": "proprietary",
     "require": {
