@@ -30,19 +30,21 @@ class GetController extends Controller
 
 		$assetUrl = $this->getAssetUrl($path, $public);
 
-		$context = stream_context_create([
-			'http' => [
-				'follow_location' => true,
-			],
-		]);
+		$devConfig = [];
 		if (App::devMode()) {
-			stream_context_set_options($context, [
+			$devConfig = [
 				'ssl' => [
 					'verify_peer' => false,
 					'verify_peer_name' => false,
 				],
-			]);
+			];
 		}
+
+		$context = stream_context_create(array_merge([
+			'http' => [
+				'follow_location' => true,
+			],
+		], $devConfig));
 
 		if (empty($assetUrl)) {
 			http_response_code(404);
