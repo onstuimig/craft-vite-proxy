@@ -1,13 +1,13 @@
 {
     "name": "onstuimig/craft-vite-proxy",
     "description": "Proxy for Vite dev server files",
-	"version": "1.0.1",
+	"version": "1.1.0",
     "type": "craft-plugin",
     "license": "proprietary",
     "require": {
         "php": ">=8.0.2",
-        "craftcms/cms": "^4.0.0",
-		"nystudio107/craft-vite": "^4.0.1"
+        "craftcms/cms": "^4.0.0|^5.0.0",
+		"nystudio107/craft-vite": "^4.0.1|^5.0.0"
     },
     "require-dev": {
         "craftcms/ecs": "dev-main",
