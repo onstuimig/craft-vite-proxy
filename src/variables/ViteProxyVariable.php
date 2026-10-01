@@ -2,13 +2,20 @@
 
 namespace onstuimig\viteproxy\variables;
 
+use craft\base\Component;
 use craft\helpers\Template;
 use craft\helpers\UrlHelper;
 use nystudio107\vite\Vite;
+use onstuimig\viteproxy\events\AssetUrlEvent;
 use Twig\Markup;
 
-class ViteProxyVariable
+class ViteProxyVariable extends Component
 {
+	/**
+	 * @event AssetUrlEvent The event that is triggered when modifying the proxy asset URL.
+	 */
+	public const EVENT_MODIFY_PROXY_ASSET_URL = 'modifyProxyAssetUrl';
+
 	/**
 	* Return the URL for the given asset
 	*
@@ -22,6 +29,15 @@ class ViteProxyVariable
 			$trimmedPath = trim($path, '/');
 			$proxyPath = '_vite_' . ($public ? 'public_' : '');
 			$assetUrl = UrlHelper::siteUrl($proxyPath . '/' . $trimmedPath);
+
+			$event = new AssetUrlEvent([
+				'assetUrl' => $assetUrl,
+				'path' => $path,
+				'public' => $public
+			]);
+			$this->trigger(self::EVENT_MODIFY_PROXY_ASSET_URL, $event);
+
+			$assetUrl = $event->assetUrl;
 		} else {
 			$assetUrl = Vite::getInstance()->vite->asset($path, $public);
 		}

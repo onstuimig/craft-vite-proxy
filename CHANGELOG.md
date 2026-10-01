@@ -1,5 +1,9 @@
 # Release Notes for Vite Proxy
 
+## 1.2.0
+### Added
+- Event to modify proxy url
+
 ## 1.1.0
 ### Added
 - Craft 5 support
